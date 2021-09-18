@@ -1,8 +1,34 @@
-const fetch = require('node-fetch');
-const node = require('node');
-const axios = require("axios");
-
 const mongoose = require('mongoose');
-const connection = mongoose.connect("mongodb://localhost:8888/test");
-const scheduleSchema = new mongose.Schema({author: string, body: string});
-const Schedule = mongose.model("scheduleSchema", scheduleSchema);
+const {
+    connection,
+    Schedule
+} = require('./connection');
+
+
+exports.handler = async (event) => {
+    try {
+        await connection
+        switch (event.httpMethod) {
+            case ('GET'): {
+                const allSchedules = await Schedule.find();
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify(allSchedules)
+                }
+            }
+            case ('POST'): {
+               const response = await Schedule.create(JSON.parse(event.body));
+                return {
+                    statusCode: 201,
+                    body: JSON.stringify(response)
+                }
+            }
+        }
+    } catch (err) {
+        console.error('--------------------', err);
+        return {
+            statusCode: 500,
+            body: JSON.stringify(err),
+        }
+    }
+};

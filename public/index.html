@@ -15,11 +15,6 @@
   <div class="container" id="clock"></div>
   <div class="timer" id="timer"></div>
 
-  <button id="calendarBtn">Schedule time for your hobby</button>
-  <div class="card" id="calendarResponse"></div>
-
-  <button id="greetingsBtn">Button</button>
-
   <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
     <div class="card">
       <h3 class="card-header" id="monthAndYear"></h3>
@@ -40,7 +35,7 @@
       </table>
 
       <div class="form-inline">
-        <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()"></button>
+        <!-- <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()"></button> -->
         <!-- <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button> -->
       </div>
       <br />
@@ -49,16 +44,24 @@
       <div id="year"></div>
     </div>
   </div>
+  <div class="card" id='schedulePlanner'>
+    <input class="text" id="author">Please enter username</input>
+    <input class="text" id="body">Please enter the date to schedule</input>
+  <button id="calendarBtn">Schedule time for your hobby</button>
+  <div class="card" id="calendarResponse"></div>
+  <button id="greetingsBtn">Button</button>
+</div>
   <script>
-    greetingsBtn.addEventListener("click", async () => {
-      const response = await fetch("/.netlify/functions/test", {
-        method: "POST",
-        body: JSON.stringify("From Index"),
+    calendarBtn.addEventListener("click", async () => {
+      const response = await fetch("/.netlify/functions/schedule", {
+        method: "POST"
       }).then((response) => response.json());
       console.log(response);
 
-      const responseText = document.querySelector(".responseText");
-      responseText.innerText = response;
+      const author = document.querySelector('#author');
+      calendarResponse = response.json;
+      const scheduleHobbyDate = document.querySelector("#body");
+      calendarResponse.innerText = response;
     });
 
     today = new Date();

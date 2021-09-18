@@ -2,7 +2,7 @@
   "name": "thehobbyhub",
   "version": "1.0.0",
   "description": "This project is to link together people who wish to start new hobbies,  dedicate more time to current hobbies, or even help other people with their hobbies. The technologies used are: Netlify, Node js, Javascript, and some others, to be determined.",
-  "main": "index.js",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "Netlify dev"
