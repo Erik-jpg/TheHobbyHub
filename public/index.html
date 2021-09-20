@@ -45,25 +45,16 @@
     </div>
   </div>
   <div class="card" id='schedulePlanner'>
-    <input class="text" id="author">Please enter username</input>
-    <input class="text" id="body">Please enter the date to schedule</input>
-  <button id="calendarBtn">Schedule time for your hobby</button>
-  <div class="card" id="calendarResponse"></div>
-  <button id="greetingsBtn">Button</button>
-</div>
+    <input class="text" type= "text" id="author" placeholder= "Please enter username"></input>
+    <input class="text" type="date" id="body" placeholder="Please select a Date"></input>
+    <button id="calendarBtn">Schedule time for your hobby</button>
+    <div class="card" id="calendarResponse"></div>
+    <button id="checkScheduleBtn">Check your schedule</button>
+  </div>
   <script>
-    calendarBtn.addEventListener("click", async () => {
-      const response = await fetch("/.netlify/functions/schedule", {
-        method: "POST"
-      }).then((response) => response.json());
-      console.log(response);
-
-      const author = document.querySelector('#author');
-      calendarResponse = response.json;
-      const scheduleHobbyDate = document.querySelector("#body");
-      calendarResponse.innerText = response;
-    });
-
+    window.addEventListener('DOMContentLoaded', (event) => {
+      
+    })
     today = new Date();
     currentMonth = today.getMonth();
     currentYear = today.getFullYear();
@@ -131,6 +122,7 @@
       return 32 - new Date(iYear, iMonth, 32).getDate();
     }
   </script>
+  <script src="./logic.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js"></script>
   <!-- Optional JavaScript for bootstrap -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
