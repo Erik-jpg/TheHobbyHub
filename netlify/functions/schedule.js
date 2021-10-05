@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const { connection, Schedule } = require("./connection");
+const { connection } = require("./connection");
+const { Schedule } = require("../../models/Schedule");
 
 const parser = ({body, ...event}) => ({...event, body: !!body ? JSON.parse(body) : ''})
 

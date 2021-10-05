@@ -1,7 +1,7 @@
 const express = require("express");
 const serverless = require("serverless-http");
 const app = express();
-const { schedule, Schedule } = require("./");
+const { Schedule } = require("../../models/Schedule");
 
 exports.handler = async (event) => {
   await connecting;
