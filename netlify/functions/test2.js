@@ -11,7 +11,7 @@ exports.handler = async (event) => {
       const newSchedule = await Schedule.creates(JSON.parse(event.body));
       return {
         statusCode: 201,
-        body: `new date with id of: ${newSchedule._id} was saved`,
+        body: JSOn.stringify({Schedule}),
       };
     }
     case "GET": {
