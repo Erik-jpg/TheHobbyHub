@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { connection } = require("./connection");
-const { Schedule } = require("../../models/Schedule");
+const Schedule  = require("./models/Schedule");
 
 const parser = ({body, ...event}) => ({...event, body: !!body ? JSON.parse(body) : ''})
 
@@ -15,7 +15,7 @@ exports.handler = async (event) => {
     switch (event.httpMethod) {
       case "GET": {
         console.log('GET method');
-        const allSchedules = await Schedule.find(JSON.stringify(event.body));
+        const allSchedules = await Schedule.find(JSON.parse(event.body));
         return {
           statusCode: 200,
           body: JSON.stringify(allSchedules),
