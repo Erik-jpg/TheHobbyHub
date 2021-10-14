@@ -7,11 +7,8 @@ const parser = ({body, ...event}) => ({...event, body: !!body ? JSON.parse(body)
 
 exports.handler = async (event) => {
   try {
-      console.log('before', event);
-      console.log(JSON.parse(event.body));
-
+    console.log(JSON.parse(event.body));
     await connection;
-    console.log('after', event);
     switch (event.httpMethod) {
       case "GET": {
         console.log('GET method');
